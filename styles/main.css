@@ -1,0 +1,244 @@
+/* Global colors */
+:root {
+    --body: #09080c;
+    --content: #23222a;
+    --main-green: hsl(127, 100%, 82%);
+    --grey: hsl(251, 9%, 53%);
+    --white: hsl(252, 11%, 91%);
+    --medium: rgb(248, 203, 99);
+    --weak: rgb(247, 75, 75);
+}
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--white);
+    user-select: none;
+}
+body {
+    background-color: var(--body);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+main {
+    display: grid;
+    width: 90vw;
+    max-width: 1000px;
+    height: 100%;
+}
+button {
+    cursor: pointer;
+    border: none;
+}
+h1 {
+    color: var(--grey);
+    text-align: center;
+    margin-top: 30px;
+}
+
+
+
+/* result style */
+.result {
+    background-color: var(--content);
+    padding: 30px;
+    display: flex;
+    justify-content: space-between;
+    margin: 30px 0;
+}
+.result input {
+    background-color: transparent;
+    font-size: 2rem;
+    border: none;
+    outline: none;
+    width: 100%;
+    font-weight: bold;
+}
+.result button {
+    width: 20%;
+    max-width: 50px;
+    background-color: transparent;
+}
+
+
+
+/* Style Form */
+form {
+    background-color: var(--content);
+    padding: 30px;
+}
+.charL {
+    display: grid;
+    grid-template-columns: 1fr minmax(20%, 50px);
+    grid-template-rows: repeat(2, fit-content);
+    row-gap: 20px;
+}
+.charL label {
+    display: flex;
+    align-items: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+.charL span {
+    text-align: end;
+    color: var(--main-green);
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+.charL input {
+    grid-column: span 2;
+}
+ul {
+    margin: 20px 0;
+    list-style: none;
+}
+ul li {
+    margin: 15px 0;
+    display: flex;
+}
+ul label {
+    font-size: 1.3rem;
+    font-weight: bold;
+    position: relative;
+    padding-left: 20px;
+    width: 100%;
+}
+ul label::before {
+    content: "";
+    border: 2px solid var(--white);
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    opacity: 1;
+    transform: translateX(calc(-100% - 16px));
+    cursor: pointer;
+}
+ul label:hover::before {
+    border: 2px solid var(--main-green);
+}
+/* remove old style from checkbox*/
+ul input[type="checkbox"] {
+    opacity: 0;
+    position: relative;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+input[type="checkbox"]:checked + label::before {
+    background-color: var(--main-green);
+    background-image: url(../images/icon-check.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    border: 2px solid var(--main-green);
+}
+.strength {
+    background-color: var(--body);
+    padding: 10px 20px;
+    display: grid;
+    grid-template-columns: repeat(2, 50%);
+}
+.strength > p {
+    font-size: 1.3rem;
+    color: var(--grey);
+    text-transform: uppercase;
+    font-weight: bold;
+}
+.strength div p {
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+.strength > div {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: center;
+    justify-content: space-between;
+}
+.hardness {
+    display: flex;
+    height: 100%;
+    justify-content: center;
+}
+.hardness span {
+    border: 2px solid var(--white);
+    display: block;
+    width: 13px;
+    height: 100%;
+    margin: 0 5px;
+}
+.strong {
+    background-color: var(--main-green);
+    border: var(--main-green) 2px solid !important;
+}
+.weak {
+    background-color: var(--weak);
+    border: var(--weak) 2px solid !important;
+}
+.medium {
+    background-color: var(--medium);
+    border: 2px solid var(--medium) !important;
+}
+button[type="submit"] {
+    width: 100%;
+    margin-top: 20px;
+    background-color: var(--main-green);
+    color: var(--body);
+    font-weight: bold;
+    padding: 20px 0;
+    font-size: 1.3rem;
+    text-transform: uppercase;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+button[type="submit"] img {
+    margin-left: 10px;
+}
+
+
+
+/* Styling range input */
+input[type=range] {
+    -webkit-appearance: none;
+    appearance: none;
+    margin: 18px 0;
+    width: 100%;
+    height: 10px;
+    background-image: linear-gradient(to right, var(--main-green) 50%, var(--body) 50%);
+}
+input[type=range]::-webkit-slider-thumb {
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    background: var(--white);
+    cursor: pointer;
+    -webkit-appearance: none;
+    margin-left: 1.9%;
+}
+input[type=range]:hover::-webkit-slider-thumb {
+    background-color: var(--body);
+    border: var(--main-green) 3px solid;
+}
+
+
+
+/* For Small screens */
+@media (max-width: 768px) {
+    .strength {
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(2, auto);
+        row-gap: 10px;
+    }
+    .result input {
+        font-size: 1.2rem;
+    }
+    ul label {
+        font-size: 1rem;
+    }
+}
+
+
+
